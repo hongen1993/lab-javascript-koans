@@ -178,7 +178,7 @@ describe('the JavaScript language', () => {
         return exampleB(1);
       }
 
-      //expect(exampleA()).toEqual();
+      expect(exampleA()).toEqual(1);
 
       function exampleB(arg1) {
         return arg1;
@@ -186,16 +186,17 @@ describe('the JavaScript language', () => {
     });
 
     it('matters, the declaration order when they are anonymous', () => {
+      const exampleB = function (arg1) {
+        return arg1;
+      };
       const exampleA = function () {
         return exampleB(1);
       };
 
-      //expect(exampleA()).toEqual(1);
+      expect(exampleA()).toEqual(1);
 
-      const exampleB = function (arg1) {
-        return arg1;
-      };
     });
+
 
     it('can use optional parameters', () => {
       function example(a, b, c) {
@@ -205,16 +206,16 @@ describe('the JavaScript language', () => {
         return a + b;
       }
 
-      //expect(example(1,1,1)).toBe();
-      //expect(example(1,1)).toBe();
+      expect(example(1, 1, 1)).toBe(3);
+      expect(example(1, 1)).toBe(2);
     });
 
     it('anonymous functions are anonymous', () => {
       const x = function z() {
         return 1;
       };
-      //expect(typeof(z)).toEqual();
-      //expect(x()).toEqual();
+      expect(typeof (z)).toEqual('undefined');
+      expect(x()).toEqual(number);
     });
 
     it('can create closures with free variables', () => {
